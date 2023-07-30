@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"custom-resource/pkg/apis/samplecrd"
+	"github.com/stephenzhang0713/custom-resource/pkg/apis/samplecrd"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
