@@ -15,6 +15,23 @@ var SchemeGroupVersion = schema.GroupVersion{
 	Version: samplecrd.Version,
 }
 
+// create a SchemeBuilder which uses functions to add types to
+// the scheme
+var (
+	SchemeBuilder = runtime.NewSchemeBuilder(addKnownTypes)
+	AddToScheme   = SchemeBuilder.AddToScheme
+)
+
+// Resource takes an unqualified resource and returns a Group qualified GroupResource
+func Resource(resource string) schema.GroupResource {
+	return SchemeGroupVersion.WithResource(resource).GroupResource()
+}
+
+// Kind takes an unqualified kind and returns back a Group qualified GroupKind
+func Kind(kind string) schema.GroupKind {
+	return SchemeGroupVersion.WithKind(kind).GroupKind()
+}
+
 // addKnownTypes adds our types to the API scheme by registering
 // Network and NetworkList
 func addKnownTypes(scheme *runtime.Scheme) error {
